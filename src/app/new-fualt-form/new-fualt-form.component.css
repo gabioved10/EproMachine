@@ -1,0 +1,92 @@
+
+.Details {
+  width: 80%;
+  background-color: white;
+  position: fixed;
+  margin: auto;
+  text-align: center;
+  border: 3px solid #111e68;
+  margin-right: 10%;
+  border-radius: 10px;
+  
+
+  }
+  form.Details{
+    text-align: center;
+  }
+  button{
+    background-color: white;
+    height: 43px;
+    width: 105px;
+    margin-right: 3%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 2px;
+    border-style: outset;
+    color: #111e68;
+    box-shadow: -10px -6px 9px 4px rgb(82 61 22  / 5%);
+    border-radius: 10px;
+    border-color: #111e6894;
+  }
+  button:hover{
+    background-color: #111e6894;
+    color: white;
+    border-color: white;
+  }
+  
+  input{
+    direction: rtl;
+      display: inline-block;
+
+  }
+  textarea{
+    margin: 0px;
+    width: 242px;
+    height: 80px;
+  }
+  label{
+    font-size: larger;
+    display: block;
+   
+    padding: 2%;
+    font-family: Arial;
+  }
+   
+  h4 {
+    text-align: right;
+    display: inline;
+    color: black;
+  
+  }
+
+  /* button{
+    
+    display: inline-block;
+    margin: auto;
+    padding: 8px;
+    color: orange;
+    margin-right: 17px;
+  } */
+  
+
+  select{
+    font-size: 114%;
+    background-color: #111e6894;
+  }
+  @media only screen and (max-width: 760px) {
+    .Details {
+      width: 60%;
+      background-color: white;
+      margin: auto;
+      position: absolute;
+      margin-right: 20%;
+      text-align: right;
+      border: 8px solid #111e68;
+    }
+    textarea {
+      margin: 0px;
+      width: 182px;
+      height: 80px;
+    }
+    
+  }

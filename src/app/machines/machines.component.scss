@@ -1,0 +1,295 @@
+
+
+*{
+    direction: rtl;
+    
+  }
+  #body{
+    background-color: floralwhite;
+  text-align: right ;
+    background-color: floralwhite;
+    width: 100%;
+    display: inline-block;
+    direction: rtl;
+    
+  }
+
+ 
+  #startBtn{
+    background-color: green;
+    color: white;
+    margin: auto;
+    display: block;
+    width: 80px;
+    padding: 5px;
+    margin-top: 40px;
+    
+  }
+  #finishBtn{
+    
+  margin: auto;
+  display: block;
+  width: 80px;
+  padding: 5px;
+  
+  }
+  #BT{
+    visibility: hidden;
+    
+  }
+  .nav{
+    width: 100%;
+    height: 20%;
+    // background-color: #f9ad0a;
+     text-align: center;
+  }
+  
+  button  {
+  width: 20%;
+  height: 10%;
+  background-color:#f9ad0a ;
+  color: white;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  text-align: center;
+  border-radius: 5px 5px 5px 5px;
+  margin: 2% 2%; 
+  }
+  
+  
+  button:hover  {
+  
+  box-shadow: 0 10px 30px 0 rgba(82, 56, 22, 0.4); 
+  
+  }
+  
+  
+  
+  .card {
+    direction: rtl;
+    margin: 1rem;
+    height: 313px;
+    width: 12%;
+    position: static;
+    float: right;
+    display: inline-block;
+    // box-shadow: 0 1px 2px rgba(25, 13, 192, 0.87), 0 1px 2px rgba(29, 18, 187, 0.616);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    // box-shadow: 1px 10px 10px rgba(236, 182, 4, 0.897), 0 10px 10px rgba(22, 50, 209, 0.952);
+    text-align: right;
+    background-color: white;
+    border: 10px solid #e6e4e4;
+    border-radius: 25px;
+   
+  }
+  .card h3{
+    background-color:  #e6e4e4;;
+    margin: auto;
+    padding-top: 10%;
+  }
+  
+  .my_class{
+    border: 10px solid red;
+   
+    // background: red;
+    // color: white;
+  };
+  .success{
+    background-color: red;
+  }
+  .fault{
+    background-color: rgb(19, 136, 19);
+  }
+
+  
+  
+  .Count0{
+    background-color: rgb(255, 174, 0);
+  }
+  
+ 
+  
+  
+  .my_class_10 {
+    border: 10px solid  rgb(255, 174, 0) ;
+   
+  
+    // background: rgb(19, 136, 19);
+    // color: white;
+  };
+
+  .my_class_100 {
+    border: 10px solid  rgb(19, 136, 19) ;
+   
+  
+    // background: rgb(19, 136, 19);
+    // color: white;
+  };
+  
+
+  .my_class_20 {
+  background-color: white;}
+  
+  .my_class h3 {
+    background-color: red;
+    margin: auto;
+    padding-top: 10%;
+  }
+  
+  .my_class_10 h3 {
+    background-color: rgb(255, 174, 0);
+    margin: auto;
+    padding-top: 10%;
+  
+  }
+  .my_class h4{
+    color: rgb(224, 20, 20);
+  }
+  .my_class_1 h4{
+    color: rgb(19, 136, 19);
+  }
+  .my_class_2{
+    background:white ;
+    color: black;
+  };
+  
+  ::before {
+    padding-left: 15px;
+  };
+  
+  .wrapper {
+  
+  };
+  
+  // .header {
+  //   position: -webkit-sticky;
+  //   position: fixed;
+  //   top: 0;
+  //  padding: 30px 30px 0;
+  //  text-align: center;
+  
+  // };
+  
+  .card1 {
+    // box-shadow: 1px 10px 10px rgba(236, 182, 4, 0.897), 0 10px 10px rgba(22, 50, 209, 0.952);
+    font-size:13px;
+    direction: rtl;
+    margin-top: 4%;
+    margin: 0.8rem;
+    display: inline-block;
+    width: 2.5%;
+    border: 1px solid black;border-radius: 5px;
+   
+   };
+  
+   #B_Instruction{
+    padding-left: 12%;
+    display: inline-block;
+   
+    
+   }
+  
+  
+  #myBtn {
+    display: none;
+    
+  }
+  
+  #myBtn:active:hover {
+    background-color: #555;
+  }
+  
+  h3{
+    text-align: center;
+    // font-size: 130%;
+  }
+  h4 {
+    display: inline;
+    color: black;
+    
+  }
+
+  textarea.swal2-textarea {
+    display: flex !important;
+    margin: 17.9977px 35.9954px 0px !important;
+    width: 434px !important;
+    height: 25px !important;
+  }
+  
+  
+  @media only screen and (max-width: 700px) {
+    button  { 
+      background-color: #edac56;
+      border: none;
+      color: white;
+      height: 40px;
+      width: 26%;
+      display: inline;
+    };
+    .my_class h3{
+      margin-top: -2%;
+        border-radius: 17% 15% 0% 0%;
+    }
+    .none{
+      display: none;
+    }
+    .card {
+      height: 60%;
+      min-height: 60%;
+      width: 90%;
+      margin: 10% 4px;
+      // border: 10px solid black;
+    
+    
+      margin-top: 10%;
+    };
+    
+    .card1 {
+      font-size: big;
+      margin: 0.3rem;
+      width: 12%;
+      display: inline-block;
+      border: 1px solid black;
+    };
+  
+    #BT{
+      visibility: visible;
+      
+    }
+
+    
+  #myBtn {
+    display: none;
+    height: 6%;
+    position: fixed;
+    bottom: 10px;
+    width: 10%;
+    
+  }
+
+  #myBtn:scroll {
+    display: block;
+  }
+
+    
+    
+    }
+
+    
+  .start{
+    background-color: rgb(19, 136, 19);
+  }
+
+  .my_class_1 {
+    border: 10px solid rgb(19, 136, 19) ;
+   
+  
+    // background: rgb(19, 136, 19);
+    // color: white;
+  };
+
+  .my_class_1 h3 {
+    background-color: rgb(19, 136, 19);
+    margin: auto;
+    padding-top: 10%;
+  }

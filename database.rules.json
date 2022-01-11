@@ -1,0 +1,36 @@
+{
+  "rules": {
+    "StopMachine": {
+      ".read": true,
+      ".write": true
+    },
+    "newFault": {
+      ".read": true,
+      ".write": true
+    },
+    "DownInstruction": {
+      ".read": true,
+      ".write": true
+    },
+    "UpInstruction": {
+      ".read": true,
+      ".write": true
+    },
+    "ProductApproval": {
+      ".read": true,
+      ".write": true
+    },
+    "LogMachine": {
+      ".read": true,
+      ".write": true
+    },
+    "InstructionApprove": {
+      ".read": true,
+      ".write": true
+    },
+    "Users": {
+      ".read": true,
+      ".write": false
+    }
+  }
+}

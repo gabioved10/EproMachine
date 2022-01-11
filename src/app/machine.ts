@@ -1,0 +1,65 @@
+export class machine {
+
+    INJECTION= 0;
+    Instruction= 0;
+    ItemCode= "";
+    MacheineNumber= 0;
+    MacheineSt= 0;
+    MachineDisabled= false;
+    Manul=0;
+    Material= "";
+    NameMachine= "";
+    NameProduct= "";
+    NameProduct1= "";
+    NextCustomerName= "";
+    NextMold= "";
+    NextProduct= 0;
+    NextRequiredQuantity= "";
+    NextWorkorder= "";
+    NightWork= false;
+    NumMold= "";
+    NumMovlaot= 0;
+    NumVacum= "";
+    NumWorker= "0";
+    OthrC= 0;
+    PORT= "1";
+    PolseDate= "";
+    PolseTime= "";
+    PortGroup= "";
+    PortStatus= 0;
+    Psolim= "0";
+    Quantity= 0;
+    SentBriefery= false;
+    StationGimorOn= false;
+    StopOpenRow= false;
+    StopSwitch= false;
+    TC= "0";
+    Time1= "";
+    Time2= "";
+    Time3= "";
+    Time4= "0";
+    TimeChAuto= "30/12/1899 00=00=00";
+    TimeChManul= "30/12/1899 00=00=00";
+    UpdateBriefery= "False";
+    efficiency:any;
+    efficiencyLast:any;
+    flagCycaleNotGoog= false;
+    minutePerLastShift= "";
+    minutePerShift= "";
+    moldLocation= "";
+    shift= "";
+    stopPerShift= "";
+    stopPerlastShift= "";
+    ApproveFirstProduct= false;
+    LastFaultBriefery= "";
+    CalcCycale= "";
+    Customer= "";
+    InstructionApprove= false;
+    NextMouldTakin= false;
+    AppFlag= "0";
+    KamotYzorGimor = "0";
+    Owner = "";
+    LastFault = "";
+      
+
+}

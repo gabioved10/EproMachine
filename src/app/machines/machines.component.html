@@ -1,0 +1,276 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+<div id="body">
+    <div style="width: 100%;
+    text-align: left;">
+
+        <label (click)="logout()" onmouseover="this.style.cursor='pointer'">{{userName.displayName}}</label>
+        <i class="fa fa-user" style="font-size:24px"></i>
+    </div>
+
+    <div class="header">
+
+        <div class="nav">
+
+            <!-- <button id="ul" (click)="logout()">יציאה</button> -->
+
+            <button id="ul" (click)="ul()" onmouseover="this.style.cursor='pointer'">אולטרפלסט</button>
+            <button id="mantin" (click)="mantin()" onmouseover="this.style.cursor='pointer'">מנטין</button>
+            <button id="Gimor" (click)="Gimor()" onmouseover="this.style.cursor='pointer'">חדר גימור</button>
+            <!-- <button (click) = "SendRestDown()"> לחץ</button> -->
+            <br>
+
+
+        </div>
+        <div style="float: right; display: inline-block;">
+
+            <label style="font-size: 70%;" *ngIf="Group==3">מכונות בעבודה
+                <label *ngIf="Group==3"
+                    style="font-size: 150%;border-width: thin;border-color:black;border-style: solid;background: rgb(9, 187, 104);color: white;">{{countInWorkMantin}}</label></label>&nbsp;&nbsp;
+            <label style="font-size: 70%;" *ngIf="Group==3">מכונות
+                בתקלה
+                <label *ngIf="Group==3"
+                    style="font-size: 150%;border-width: thin;border-color:black;border-style: solid; background: red;color: white;">{{countInFoultMantin}}</label>
+            </label>&nbsp;&nbsp;
+
+
+
+            <label style="font-size: 70%;" *ngIf="Group==1">מכונות בעבודה
+                <label *ngIf="Group==1"
+                    style="font-size: 150%;border-width: thin;border-color:black;border-style: solid;background: rgb(9, 187, 104);color: white;">{{countInWork}}</label></label>&nbsp;&nbsp;
+            <label style="font-size: 70%;" *ngIf="Group==1">מכונות
+                בתקלה
+                <label *ngIf="Group==1"
+                    style="font-size: 150%;border-width: thin;border-color:black;border-style: solid; background: red;color: white;">{{countInFoult}}</label>
+            </label>&nbsp;&nbsp;
+            <label style="font-size: 70%;" *ngIf="Group==1" class="none">מכונות בסטאפ
+                <label
+                    style="font-size: 150%;border-width: thin;border-color:black;border-style: solid;;background: #f9ad0a;color: wite;">{{countInTest}}</label></label>&nbsp;
+            <label style="font-size: 70%;" *ngIf="Group==1" class="none"> מכונות ללא שיבוץ
+                <label
+                    style="font-size: 150%;border-width: thin;border-color:black;border-style: solid;background: white;color: white;">..</label></label>&nbsp;
+
+            <label style="font-size: 70%;" *ngIf="Group==1" class="none"> סיום יצור
+                <i class="fa fa-flag" style="font-size:24px"></i>
+            </label>&nbsp;&nbsp;
+            <label style="font-size: 70%;" *ngIf="Group==1" class="none">אישור מוצר ראשון
+                <i style="font-size:18px" class="material-icons">done</i>
+            </label>
+
+        </div>
+
+
+
+        <h4 style="font-size: 50%; text-align: right; height: 2px;" (click)="logout()"></h4>
+        <!-- <button  id="b1" (click)="logout()" >LOGOUT</button> -->
+
+        <div *ngIf="users[0] !=null" style="text-align: center; direction: rtl;margin-top: 12%;">
+            <div class="card1" [class.Count0]="x.MacheineSt == 0 && x.Quantity !== 0 "
+                [class.success]="x.MacheineSt == 3 || x.MacheineSt == 4" [class.fault]="x.MacheineSt == 1"
+                [class.my_class_20]="x.MacheineSt == 0 && x.Quantity == 0"
+                [class.start]="Group==2 && GimprStationArry[x.MacheineNumber].status =='1'"
+                *ngFor="let x of m ; let i=index">
+                <div (click)="scroll(x.MacheineNumber)" onmouseover="this.style.cursor='pointer'">
+                    <div style=" display: flex; direction: rtl;">
+                        <span style="display: inline-block; filter: opacity(0%);">*</span>
+                        <span style="width:4%; display: inline-block; " title="אישור מוצר ראשון"
+                            *ngIf="flagApprove == false && x.ApproveFirstProduct==false && x.Quantity !=0 && x.Manul+x.OthrC >1">*</span>
+                        <h2 *ngIf="Group==1 || Group==3" style="text-align: right;"> {{x.MacheineNumber}} </h2>
+                        <h2 *ngIf="Group==2" style="text-align: right;">{{NameStation(x.MacheineNumber)}}</h2>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div *ngIf="users[0] !=null" style="text-align: center; direction: rtl;margin: auto; ">
+        <div attr.id="Location{{x.MacheineNumber}}" class="card"
+            [class.my_class_10]="x.MacheineSt == 0 && x.Quantity != 0"
+            [class.my_class]="x.MacheineSt == 3 || x.MacheineSt == 4" [class.my_class_1]="x.MacheineSt == 1"
+            *ngFor="let x of m ; let i=index">
+
+            <!-- אולטרפלסט -->
+            <div *ngIf="Group==1 ">
+                
+                <h3><i *ngIf="x.INJECTION>x.Quantity"  class="fa fa-flag" style="font-size:24px"></i>
+                    <span style="position: static;float: right; font-size:15px; margin: -5% 0% 0% 2%;">{{getNameEmploy(x.Owner)}}</span>
+                    מכונה {{x.MacheineNumber }}: {{x.INJECTION != 0 || x.Quantity != 0 ?
+                    (x.INJECTION/x.Quantity*100).toFixed(0) : 0}}% 
+                    <i *ngIf="x.NextProduct!=0 && x.NextProduct!=null" (click)="nextproduct(x.MacheineNumber) "onmouseover="this.style.cursor='pointer'"
+                        style="position: static;float: left; font-size:25px; margin: -5% 0% 0% 2%;"
+                        class="material-icons">wysiwyg</i>
+                    <i (click)="fualtLog(x.MacheineNumber)" onmouseover="this.style.cursor='pointer'"
+                        style="position: static;float: left; font-size:25px; margin: -5% 0% 0% 2%;"
+                        class="material-icons">build</i>
+                       
+
+
+                </h3>
+
+                <div (click)="Details(x.MacheineNumber)" onmouseover="this.style.cursor='pointer'">
+                    <h4>שם מוצר: </h4> {{x.NameProduct}}
+                    <br><br>
+                    <h4>כמות לייצור: </h4>{{(x.Quantity != 0 || x.NumMovlaot==x.NumMovlaot ?
+                    (x.NumMovlaot*x.Quantity).toLocaleString() : 0 )}}
+                    <i *ngIf="x.ApproveFirstProduct==true" style="font-size:18px" class="material-icons">done</i>
+
+                    <i *ngIf="users[0].downAprrove == 1 && x.Quantity !=0 && x.AppFlag ==null && (x.InstructionApprove == true || x.INJECTION>x.Quantity)"
+                        (click)="DownInstruction(x.MacheineNumber,i) " onmouseover="this.style.cursor='pointer'"
+                        style="padding-left: 4px;margin-left: 5px;position: static;float: left; border: 2px solid black ;font-size:24px; padding-right: 5%;"
+                        class="material-icons">
+
+                        <span *ngIf="users[0].downAprrove == 1" class="material-icons-outlined">
+                            <span class="material-icons-outlined">
+                                arrow_downward
+                            </span>
+                        </span>
+                    </i>
+
+                    <i *ngIf="users[0].upApprove == 1 && x.AppFlag ==null && x.NextProduct!=0 && x.NextProduct!=null && x.Quantity ==0"
+                        (click)="UpInstruction(x.MacheineNumber,i)"onmouseover="this.style.cursor='pointer'"
+                        style="padding-left: 4px;margin-left: 5px;position: static;float: left;border: 2px solid black ;font-size:24px; padding-right: 5%;"
+                        class="material-icons">
+
+
+                        <span *ngIf="users[0].upApprove == 1" class="material-icons-outlined">
+                            <span class="material-icons-outlined">
+                                arrow_upward
+                            </span>
+                        </span>
+                    </i>
+
+
+                    <br><br>
+                    <h4>הזרקות נדרש: </h4>{{x.Quantity == x.Quantity ? x.Quantity.toLocaleString() : 0 }}
+                    <i *ngIf="users[0].firstProduct == 1 &&  x.AppFlag ==null && x.ApproveFirstProduct==false && x.Quantity !=0 && x.Manul+x.OthrC >1"
+                        (click)="ApproveProduct(x.MacheineNumber,i)"onmouseover="this.style.cursor='pointer'"
+                        style="position: static;float: left;padding-left: 4px;margin-left: 5px; border: 2px solid black ; font-size:24px; padding-right: 5%;"
+                        class="material-icons">
+
+                        <span *ngIf="users[0].firstProduct == 1" class="material-icons-outlined">
+                            thumb_up_off_alt
+                        </span>
+                    </i>
+
+                    <span *ngIf="x.NightWork==true">
+                        &nbsp;&nbsp; מ.לילה
+                    </span>
+                    <br><br>
+                    <h4>הזרקות בפועל: </h4>{{x.INJECTION.toLocaleString()}}
+                    <!-- x.InstructionApprove == true -->
+
+                    <br><br>
+                    <h4>הזרקות נסיון:</h4>
+                    {{(x.Manul+x.OthrC==0?0:x.Manul+x.OthrC).toLocaleString()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <!-- <i style="position: static; float: left; font-size:30px; padding-right: 5%;"
+                    class="material-icons">more</i> -->
+                    <!-- <h2 style="text-align: center;" *ngIf="x.MacheineSt == 3"> {{x.LastFaultBriefery}} </h2> -->
+                 <p style="background-color: red;margin: auto;width: max-content; text-align: right; font-size:20px; " *ngIf="x.MacheineSt == 3">{{x.LastFault}}</p> 
+                 
+                </div>
+
+
+            </div>
+
+
+
+            <!-- מנטיו -->
+            <div *ngIf="Group==3 ">
+                <i (click)="fualtLog(x.MacheineNumber)" onmouseover="this.style.cursor='pointer'"
+                    style="position: static;float: left; font-size:25px; margin: 5% 0% 0% 5%;"
+                    class="material-icons">build</i>
+                <div *ngIf="Group==3" (click)="Details(x.MacheineNumber)" onmouseover="this.style.cursor='pointer'">
+                    <h3>מכונה {{x.MacheineNumber }}</h3>
+                    <h4>שם מוצר: </h4> {{x.NameProduct}}
+                    <br><br>
+                    <h4>נצילות: </h4>{{x.efficiency.toFixed(2)*100}}%
+                    <br><br>
+                    <h4>כמות עצירות: </h4>{{x.stopPerShift}}<i *ngIf="x.ApproveFirstProduct==true"
+                        style="font-size:18px" class="material-icons">done</i>
+                    <br><br>
+                    <h4>דקות עצירה:</h4>{{x.minutePerShift}}
+                    <br><br>
+                    <h4>זמן מחזור:</h4>{{x.CalcCycale.slice(3,9)}}
+                    <br><br>
+                    <h4>פולס אחרון:</h4>{{x.PolseTime.slice(0,5)}} &nbsp;&nbsp;{{x.PolseDate.slice(0,10)}}
+
+
+
+
+                    <h2 style="text-align: center;" *ngIf="x.MacheineSt == 3"> {{x.LastFaultBriefery}} </h2>
+                </div>
+
+            </div>
+
+            <div>
+                <!-- חדר גימור -->
+                <div *ngIf="Group==2">
+                    <i (click)="fualtLog(x.MacheineNumber)" onmouseover="this.style.cursor='pointer'"
+                    style="position: static;float: left; font-size:25px; margin: 5% 0% 0% 5%;"
+                    class="material-icons">build</i>
+                    
+                    <div *ngIf="Group==2" [class.my_class_100]="GimprStationArry[x.MacheineNumber].status =='1'">
+                        <h3 *ngIf="Group==2"> עמדה {{NameStation(x.MacheineNumber)}} - {{NameEmpl(x.NumWorker)}}</h3>
+                        <br>
+                        <h4> {{x.NameProduct}}</h4>
+                        <br>
+                        <h4>מס' פקע</h4> {{x.Instruction}}
+                        <br>
+                        <h4>כמות נדרשת</h4> {{x.Quantity}}
+                        <br>
+                        <h4>כמות בפועל</h4> {{x.KamotYzorGimor}}
+
+                        <br>
+                        <h4 *ngIf="GimprStationArry[x.MacheineNumber].status =='1'">זמן
+                            התחלה:{{GimprStationArry[x.MacheineNumber].TimeStart }}</h4>
+                        <br><br>
+                        <input style="width:80% ; box-sizing: border-box;text-align: center;margin: auto;"
+                            placeholder="הזן כמות" *ngIf="GimprStationArry[x.MacheineNumber].status =='1'" type="number"
+                            id="KamotYzorGimor" name="KamotYzorGimor" [(ngModel)]="gl.Quntity"><br><br>
+
+                        <!-- *ngIf="(number)GimprStationArry[123].STATUS =='0'"  -->
+                        <button id="startBtn" *ngIf="GimprStationArry[x.MacheineNumber].status =='0'"
+                            (click)="start(x.MacheineNumber)" onmouseover="this.style.cursor='pointer'">התחלה</button>
+                        <button id="finishBtn" *ngIf="GimprStationArry[x.MacheineNumber].status =='1'"
+                            (click)="finish(x.MacheineNumber,i)" onmouseover="this.style.cursor='pointer'">סיום</button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<button (click)="topFunction()" onmouseover="this.style.cursor='pointer'" id="myBtn" title="Go to top">
+    <i class="fa fa-arrow-circle-up" style="font-size:28px"></i>
+
+</button>
+
+<div style="display: inline-block; top: 20px;" *ngIf="flageFautl==true">
+    <app-fault-machine [numberMachine]="machineSelect" (dataToParent2)="ChangeFlageFalse(machineSelect)">
+    </app-fault-machine>
+</div>
+
+<div style="display: inline-block; top: 20px;" *ngIf="flageDetails==true">
+    <app-details [numberMachine]="machineSelect" (dataToParent2)="ChangeFlageFalse(machineSelect)"></app-details>
+</div>
+
+
+<div style="display: inline-block; top: 20px;" *ngIf="flagnextproduct==true">
+    <app-next-product [numberMachine]="machineSelect" (dataToParent2)="ChangeFlageFalse(machineSelect)">
+    </app-next-product>
+</div>

@@ -1,0 +1,103 @@
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajamachine[0]./libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<div class="Details">
+
+
+  <h2 style="font-size: large;">מכונה: {{machine[0].MacheineNumber}}</h2>
+  <h4 style="font-size: large;"> פק"ע: </h4> {{machine[0].Instruction}}
+  <br><br>
+  <h4 style="font-size: large;">שם מוצר: </h4> {{machine[0].NameProduct}}
+  <br><br>
+  <h4 style="font-size: large;">תבנית: </h4> {{machine[0].NumMold}}
+  <br><br>
+  <h4 style="font-size: large;">שם לקוח: </h4> {{machine[0].Customer}}
+  <br><br>
+  <h4 style="font-size: large;">חו"ג: </h4> {{machine[0].Material}}
+  <br><br>
+  <h4 style="font-size: large;">ק.א: {{machine[0].PolseTime.slice(0,5)}} &nbsp;&nbsp;
+    {{machine[0].PolseDate.slice(0,10)}}</h4>
+  <br><br>
+  <h4 style="font-size: large;"> מחזור: </h4> {{machine[0].CalcCycale.slice(3,9)}}
+  <br><br>
+
+
+  <h4 style="font-size: large;">יתרת שעות ייצור: {{convertHMS("00:" +
+    machine[0].CalcCycale.slice(3,9),(machine[0].Quantity-machine[0].INJECTION))}}</h4>
+  <br><br>
+
+  <button (click)="close()">סגור</button>
+  <button (click)="StopData()" > יומן עצירות</button>
+  <!-- <div *ngFor="let stop of stopData">
+  
+  <h4>זמן פתיחה: {{stop.TimeStartStop}}  -- {{stop.TimeStartStop.slice(2,10)}}</h4>
+  <br><br>
+  <h4>זמן סיום: {{stop.TimeEndStop}}  -- {{stop.TimeEndStop.slice(2,10)}}</h4>
+  <br><br>
+  <h4>קוד תקלה: {{stop.Kod}}</h4>
+  <br><br>
+</div> -->
+
+
+
+
+  <table *ngIf="displayFoalts" style="width:80%; direction: rtl;">
+    <tr>
+      <th>מס' עצירה</th>
+      <th>זמן פתיחה</th>
+      <th>זמן סגירה</th>
+      <th>קוד תקלה</th>
+    </tr>
+
+    <tr *ngFor="let stop of stopData ; let i=index">
+      <td>{{stop.NumStop}}</td>
+      <td>{{datepipe.transform(stop.TimeStartStop, 'hh:mm:s a')}} <br>
+        {{datepipe.transform(stop.TimeStartStop, 'dd-MM-YY')}} </td>
+      <td *ngIf="datepipe.transform(stop.TimeEndStop, 'dd-MM-YY') !='01-01-01'">{{datepipe.transform(stop.TimeEndStop,
+        'hh:mm:s a')}}<br>
+        {{datepipe.transform(stop.TimeEndStop, 'dd-MM-YY')}} </td>
+      <td>{{stop.Kod}}</td>
+
+      <i style="position: static;float: left; font-size:30px; margin: -5% 0% 0% 2%;" class="material-icons">edit</i>
+    </tr>
+
+
+
+  </table>
+
+
+  <div>
+
+
+
+
+    <!-- 
+<nb-reveal-card>
+    <nb-card-front>
+      <nb-card status="success">
+        <nb-card-header>Front Card Header</nb-card-header>
+        <nb-card-body>
+            <i (click)="close()"class="fa fa-times-rectangle" style="font-size:30px; margin-right: 80%;"></i>
+
+            <h2>מכונה: {{machine[0].MacheineNumber}}</h2>
+        
+            <h4>שם מוצר: </h4> {{machine[0].NameProduct}} 
+            <br><br>
+            <h4>שם לקוח: </h4> {{machine[0].Customer}} 
+            <br><br>
+            <h4>חו"ג </h4> {{machine[0].Material}} 
+            <br><br>
+        
+        </nb-card-body>
+      </nb-card>
+    </nb-card-front>
+    <nb-card-back>
+      <nb-card status="danger">
+        <nb-card-header>Back Card Header</nb-card-header>
+        <nb-card-body>
+          bbb
+        </nb-card-body>
+      </nb-card>
+    </nb-card-back>
+  </nb-reveal-card> -->

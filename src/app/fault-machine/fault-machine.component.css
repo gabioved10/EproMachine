@@ -1,0 +1,182 @@
+.Details {
+   
+ text-align: center;
+    width: 80%;
+    background-color: white;
+    margin: auto;
+    position: absolute;
+    margin-right: 10%;
+    border-radius: 15px;
+    border: 5px solid #111e68;;
+  }
+  @keyframes mymove {
+    from {bottom: 0px;}
+    to {bottom: 200px;}
+  }
+
+  table { 
+    text-align: right;
+    direction: rtl;
+    width: min-content;
+    border-collapse: collapse;
+    margin: auto;
+    border-bottom: 2px solid rgba(255,255,255,0.1) 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    /* background: #eee;  */
+  }
+  th { 
+    text-align: right; direction: rtl;
+    /* background: #333;  */
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    text-align: right; direction: rtl;
+    padding: 6px; 
+    text-align: left; 
+  }
+  button{
+    background-color: white;
+    height: 43px;
+    width: 105px;
+    margin-right: 3%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 2px;
+    border-style: outset;
+    color: #111e68;
+    box-shadow: -10px -6px 9px 4px rgb(82 61 22  / 5%);
+    border-radius: 10px;
+    border-color: #111e6894;
+  }
+  button:hover{
+    background-color: #111e6894;
+    color: white;
+    border-color: white;
+  }
+  
+  @media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+  button {width: auto;}
+
+  .Details {
+    width: 80%;
+    background-color: white;
+    margin: auto;
+    position: absolute;
+    margin-right: 10%;
+    text-align: center;
+    border: 5px solid #111e68;;
+  }
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+    
+		display: block; 
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+   
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	td { 
+		position: relative;
+		padding-left: 50%;
+    border-bottom: 2px solid rgba(255, 166, 0, 0.137); 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+   
+		top: 6px;
+		left: 6px;
+		width: 100%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+
+  td:nth-of-type(1):before { content: "מספר תקלה"; }
+	td:nth-of-type(2):before { content: "קוד תקלה"; }
+	td:nth-of-type(3):before { content: "תאור קוד"; }
+	td:nth-of-type(4):before { content: "יוזם"; }
+	td:nth-of-type(5):before { content: "הערות"; }
+	td:nth-of-type(6):before { content: "עדיפות"; }
+	td:nth-of-type(7):before { content: "סטטוס"; }
+	td:nth-of-type(8):before { content: "אחראי"; }
+	td:nth-of-type(9):before { content: "מהות הטיפול"; }
+
+	
+  }
+
+
+  
+/* ANIMATIONS */
+
+/* Simple CSS3 Fade-in-down Animation */
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 3s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+  
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+
+/* ..... */
+
+
+
+
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  background-color: #111e6894;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  border-bottom: 1px solid  rgb(63 73 133);;
+}
+

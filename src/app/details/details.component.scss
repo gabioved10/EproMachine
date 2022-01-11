@@ -1,0 +1,58 @@
+
+  .Details {
+   
+    text-align: center;
+       width: 80%;
+       background-color: white;
+       margin: auto;
+       position: absolute;
+       margin-right: 10%;
+       border-radius: 15px;
+       border: 5px solid #111e68;;
+     }
+
+     button{
+      background-color: white;
+      height: 43px;
+      width: 105px;
+      margin-right: 3%;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border: 2px;
+      border-style: outset;
+      color: #111e68;
+      box-shadow: -10px -6px 9px 4px rgb(82 61 22  / 5%);
+      border-radius: 10px;
+      border-color: #111e6894;
+    }
+    button:hover{
+      background-color: #111e6894;
+      color: white;
+      border-color: white;
+    }
+h3 {
+  text-align: right;
+  // font-size: 130%;
+}
+
+h4 {
+  text-align: right;
+  display: inline;
+  color: black;
+
+}
+
+table, th, td {
+  border:0.5px solid black;
+}
+
+@media only screen and (max-width: 800px) {
+  .Details {
+    
+    padding-right: 5%;
+    margin: 4%;
+    width: 80%;
+
+
+  }
+}

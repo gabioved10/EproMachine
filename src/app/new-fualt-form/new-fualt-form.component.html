@@ -1,0 +1,42 @@
+
+<form #f="ngForm" (ngSubmit)="submitForm(f)" class="Details">
+    <!-- <i (click)="close()" class="fa fa-times-rectangle" style="font-size:30px; margin-right: 80%;"></i> -->
+
+    <input type="hidden" [(ngModel)]="faultLog.ID" name="ID" value="2">
+    <input type="hidden" [(ngModel)]="faultLog.NumMachine" name="NumMachine" value="3">
+    <input type="hidden" [(ngModel)]="faultLog.OpenBy" name="OpenBy" value="3">
+    <input type="hidden" [(ngModel)]="faultLog.TimeOpen" name="TimeOpen" value=Date()>
+    <input type="hidden" [(ngModel)]="faultLog.Owner" name="Owner" value="0">
+    <input type="hidden" [(ngModel)]="faultLog.Better" name="Better" value="0">
+    <input type="hidden" [(ngModel)]="faultLog.Stutos" name="Stutos" value="0">
+    <i class="fa fa-question-circle" style="color: #111e68ad;font-size:66px"></i>
+       <label>
+        <input type="hidden" [(ngModel)]="faultLog.NumMachine" value={{numberMachine}} name="NumMachine">
+    </label>
+
+    <label>תאור תקלה:
+        <select class="custom-select">
+            <option *ngFor="let k of KodFault"> {{k.NameFault}}</option>
+           
+        </select>
+</label>
+   
+  
+        <!-- <textarea [(ngModel)]="faultLog.Comments" style="margin: 0px; width: 511px; height: 148px; text-align: right; font-size: x-large;" id="w3review" name="w3review" rows="6" cols="60"> -->
+
+        <textarea type="text" rows="8" cols="40" [(ngModel)]="faultLog.Comments" name="Comments" required></textarea>
+    
+<div>
+    <button [disabled]="!f.valid"> שליחה </button>
+    <button (click)="close()" > ביטול </button>
+</div>
+    
+
+</form>
+<!-- <input type = "text" name ="id" required>
+    <select name ="" id ="">
+        <option value = "1"> תקלה מכנית</option>
+        <option value = "1"> תקלה חשמלית</option>
+
+        <button>submit</button>
+    </select> -->

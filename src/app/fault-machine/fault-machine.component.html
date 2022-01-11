@@ -1,0 +1,61 @@
+<div class="fadeInDown"  *ngIf="flagNewFault==false" class="Details">
+ 
+  <i _ngcontent-qlc-c55="" class="material-icons" style=" font-size: 65px;padding: 31px; ">build</i>
+ 
+  <h1 >תקלות יזומות: מכונה :{{numberMachine}}</h1>
+  <div style="margin: auto;width: auto; text-align: center;">
+    <button (click)="addFualt(numberMachine)"> <i class="fa fa-plus" style="font-size:20px"></i> הוספת תקלה</button>
+    <button (click)="close()">  סגור</button>
+    
+  
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+    <th></th>
+      <th>מספר תקלה</th>
+      <th>קוד תקלה</th>
+      <th>תאור קוד</th>
+      <th>יוזם</th>
+      <th>הערות</th>
+      <th>עדיפות</th>
+      <th>סטטוס</th>
+      <th>אחראי</th>
+      <th>מהות הטיפול</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let log of faultLog ; let i=index">
+      <td>      <i (click)="updateFualt(log.ID)"  style="position: static;float: left; font-size:15px; margin: -5% 0% 0% 2%;" class="material-icons">edit</i>
+      </td>
+      <td  id={{log.ID}}>{{log.ID}}</td>
+      <td id={{log.ID}}>{{log.KodTakala}}</td>
+      <td id={{log.ID}}>{{log.KodDescription}}</td>
+      <td id={{log.ID}}>{{log.OpenOwner}}</td>
+      <td id={{log.ID}}>{{log.Comments}}</td>
+      <td id={{log.ID}}>{{log.Better}}</td>
+      <td id={{log.ID}}>{{log.Stutos}}</td>
+      <td id={{log.ID}}>{{log.Owner}}</td>
+      <td id={{log.ID}}>{{log.FixDescription}}</td>
+      <br/>
+      
+
+    </tr>
+
+  </tbody>
+
+  </table>
+  
+
+</div>
+
+
+
+
+
+<div style="display: inline-block; top: 20px;" *ngIf="flagNewFault==true">
+ 
+  <app-new-fualt-form [numberMachine]="machineSelect" [ID] = "highestId" (dataToParent3)="ChangeFlageFalse(machineSelect)">
+  </app-new-fualt-form>
+</div>

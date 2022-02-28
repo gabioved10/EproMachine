@@ -3,7 +3,8 @@ import { ApiService } from '../api-service.service';
 import { machine } from '../machine';
 import { StopData } from '../stop-data';
 import { DatePipe } from '@angular/common'
-
+import { Psolim } from '../psolim';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-details',
@@ -17,7 +18,20 @@ export class DetailsComponent implements OnInit {
   machine: machine[] = [];
   stopData: StopData[] = [];
   displayFoalts: Boolean = false;
+  
 
+  psolim:Psolim={
+    Num_Instuction:0,
+    Num_Fault:  0,
+    Quantity:0,
+    NUMEMP:0,
+    DateFautl:"30/12/1899",
+    Close: 0,
+    TimeFautl:"15:00:00"
+
+  };
+
+  QuntityPsolim:Number=0;
 
 
 
@@ -39,7 +53,7 @@ export class DetailsComponent implements OnInit {
     var id = setInterval(frame, 2);
     function frame() {
       if (200!=scroll) {
-        document.documentElement.scrollTop = 200;
+        document.documentElement.scrollTop = 450;
         scroll++
       } }
       
@@ -78,8 +92,69 @@ export class DetailsComponent implements OnInit {
 
   }
 
+  PsolimUpdate(Instruction:any){
 
 
+    if(this.QuntityPsolim == 0){
+
+      Swal.fire(
+        '',
+        'לא הוזן כמות',
+        'error'
+      )
+
+      
+    }
+
+    else{
+
+      const today = new Date();
+      let  dd= today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      let  tt= today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  
+  
+  
+      this.psolim.Num_Instuction=Instruction;
+      this.psolim.Num_Fault = 0;
+      this.psolim.Quantity=this.QuntityPsolim;
+      this.psolim.NUMEMP=this.ser.UserId;
+      this.psolim.DateFautl =dd;
+      this.psolim.Close = 0;
+      this.psolim.TimeFautl = tt;
+      
+      this.ser.PostPsolim(this.psolim).subscribe();
+      this.QuntityPsolim =0;
+      Swal.fire(
+        '',
+        'העדכון נשלח בהצלחה',
+        'success'
+      )
+    }
+   
+  }
+
+ getStopTime(){
+  
+   var Cdate =  new Date()
+  
+  var Polse1= new Date(this.machine[0].PolseDate)
+
+   return  this.diff_hours(Polse1,Cdate) 
+ }
+
+  diff_hours(dt2:Date, dt1:Date) 
+
+  
+ {
+
+ 
+
+  var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+  diff /= (60 * 60);
+ 
+  return Math.abs(parseFloat(diff.toFixed(1)));
+  
+ }
 
   convertHMS(timeString: any, Qun: any) {
 

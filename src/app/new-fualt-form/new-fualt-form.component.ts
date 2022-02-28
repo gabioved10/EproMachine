@@ -7,6 +7,8 @@ import { FaultLog } from '../fault-log';
 import { KodFault } from '../kod-fault';
 
 
+
+
 @Component({
   selector: 'app-new-fualt-form',
   templateUrl: './new-fualt-form.component.html',
@@ -20,11 +22,16 @@ export class NewFualtFormComponent implements OnInit {
   KodDescription: number = 0;
   KodFault: KodFault[] = [];
   today = new Date();
+  selectedLevel: string  =""
+
+  
 
 
 
   constructor(private ser: ApiService) { }
 
+ 
+  
   ngOnInit(): void {
     this.faultLog.NumMachine = this.numberMachine;
     this.faultLog.ID = this.ID
@@ -62,9 +69,11 @@ export class NewFualtFormComponent implements OnInit {
 
     var today = new Date();
 
-
+    debugger;
     f.value.TimeOpen = today;
-    console.log(f.value);
+    f.value.KodDescription = this.GetDescription(f.value.KodTakala)
+    f.value.OpenOwner = this.ser.UserName
+   // console.log(f);
     this.ser.PostfaultLog(f.value).subscribe()
     this.faultLog.ID++
     // 
@@ -76,6 +85,24 @@ export class NewFualtFormComponent implements OnInit {
     )
     this.dataToParent3.emit(this.numberMachine);
     this.dataToParent2.emit(this.numberMachine);
+  }
+
+
+  GetDescription(kod: any) {
+    // var k = this.KodFault.filter(s => s.KODFault == kod);
+    for (let index = 0; index <  this.KodFault.length; index++) {
+      const element =  this.KodFault[index];
+       if (element.KODFault == kod)
+        return element.NameFault;
+     
+    }
+    return null;
+
+  }
+
+
+  selected(s:any){
+    console.log(s)
   }
 
 }

@@ -7,7 +7,7 @@
     <div style="width: 100%;
     text-align: left;">
 
-        <label (click)="logout()" onmouseover="this.style.cursor='pointer'">{{userName.displayName}}</label>
+        <label (click)="logout()" onmouseover="this.style.cursor='pointer'">{{ser.UserName }}</label>
         <i class="fa fa-user" style="font-size:24px"></i>
     </div>
 
@@ -70,7 +70,7 @@
         <div *ngIf="users[0] !=null" style="text-align: center; direction: rtl;margin-top: 12%;">
             <div class="card1" [class.Count0]="x.MacheineSt == 0 && x.Quantity !== 0 "
                 [class.success]="x.MacheineSt == 3 || x.MacheineSt == 4" [class.fault]="x.MacheineSt == 1"
-                [class.my_class_20]="x.MacheineSt == 0 && x.Quantity == 0"
+                [class.my_class_20]="x.MacheineSt == 0 && x.Quantity == 0"[class.my_class_MAHZOR]="x.MacheineSt == 2 && x.Quantity != 0"
                 [class.start]="Group==2 && GimprStationArry[x.MacheineNumber].status =='1'"
                 *ngFor="let x of m ; let i=index">
                 <div (click)="scroll(x.MacheineNumber)" onmouseover="this.style.cursor='pointer'">
@@ -94,7 +94,7 @@
     <div *ngIf="users[0] !=null" style="text-align: center; direction: rtl;margin: auto; ">
         <div attr.id="Location{{x.MacheineNumber}}" class="card"
             [class.my_class_10]="x.MacheineSt == 0 && x.Quantity != 0"
-            [class.my_class]="x.MacheineSt == 3 || x.MacheineSt == 4" [class.my_class_1]="x.MacheineSt == 1"
+            [class.my_class]="x.MacheineSt == 3 || x.MacheineSt == 4" [class.my_class_1]="x.MacheineSt == 1|| x.MacheineSt == 2" 
             *ngFor="let x of m ; let i=index">
 
             <!-- אולטרפלסט -->

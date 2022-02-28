@@ -52,7 +52,7 @@ export class MachinesComponent implements OnInit {
   }
 
 
-  constructor(private auth: AuthserviceServiceService, private ser: ApiService, private http: HttpClient, private UserService: UserServiceServiceService, private router: Router) { }
+  constructor(private auth: AuthserviceServiceService, public ser: ApiService, private http: HttpClient, private UserService: UserServiceServiceService, private router: Router) { }
 
 
 
@@ -63,19 +63,27 @@ export class MachinesComponent implements OnInit {
 
     this.UserService.getCurrentUser().then(user1 => {
       this.userName = user1;
+    this.ser.UserName= this.userName.displayName;
+
       this.ser.GetAllUsers().subscribe(user => {
         this.AllUsers = user,
-        this.users = user.filter(item => {
-          return item.EmailAddress == this.userName.email
-        })
+          this.users = user.filter(item => { 
+            return item.EmailAddress == this.userName.email;
+          })
+         this.ser.UserId = this.users[0].ID;
+        // localStorage.setItem('idUser',temp.toString());
+
       })
 
       this.userName.userName
+
       // console.log(this.userName)
       // console.log(this.userName.email)
 
     })
   }
+
+
 
 
   Gimor() {
@@ -110,6 +118,8 @@ export class MachinesComponent implements OnInit {
 
   ul() {
     this.Group = 1;
+
+
     this.ser.GetAllEmployees().subscribe(s => {
       this.m = s
       this.mAll = s
@@ -127,7 +137,7 @@ export class MachinesComponent implements OnInit {
       let gimor: any = document.getElementById("Gimor");
       gimor.style.backgroundColor = "#e2a758fa";
 
-      this.countInWork = this.m.filter(a => a.PortGroup == "1" && a.MacheineNumber != 0 && a.PortStatus != 0 && a.MacheineSt == 1).length;
+      this.countInWork = this.m.filter(a => (a.PortGroup == "1" && a.MacheineNumber != 0 && a.PortStatus != 0 && a.MacheineSt == 1) || (a.PortGroup == "1" && a.MacheineNumber != 0 && a.PortStatus != 0 && a.MacheineSt == 2)).length;
       this.countInFoult = this.m.filter(a => a.PortGroup == "1" && a.MacheineNumber != 0 && a.PortStatus != 0 && a.MacheineSt == 3).length;
       this.countInTest = this.m.filter(a => a.PortGroup == "1" && a.MacheineNumber != 0 && a.PortStatus != 0 && (a.MacheineSt == 0 && a.Quantity != 0)).length;
       this.countInNoWork = this.m.filter(a => a.PortGroup == "1" && a.MacheineNumber != 0 && a.PortStatus != 0 && (a.MacheineSt == 0 && a.Quantity != 0)).length;
@@ -253,12 +263,17 @@ export class MachinesComponent implements OnInit {
 
   async DownInstruction(nummachine: number, i: number) {
 
+    
     this.flagShowDetail = false;
     var password
     await Swal.fire({
       title: 'הכנס סיסמא',
-      input: 'textarea',
+      
+      html: `<input type="password" id="password" class="swal2-input"  placeholder="Password" >`,
+
       icon: 'warning',
+      focusConfirm:true
+
 
     }).then(function (result) {
       password = result.value
@@ -316,6 +331,7 @@ export class MachinesComponent implements OnInit {
       title: '  הכנס סיסמא להעלאת פקע',
       input: 'textarea',
       icon: 'warning',
+
 
     }).then(function (result) {
       password = result.value
@@ -384,15 +400,16 @@ export class MachinesComponent implements OnInit {
 
 
 
- async ApproveProduct(nummachine: number, i: number) {
+  async ApproveProduct(nummachine: number, i: number) {
 
-   var password
+    var password
     this.flagShowDetail = false;
 
     await Swal.fire({
       title: 'הכנס סיסמא',
       input: 'textarea',
       icon: 'warning',
+
 
     }).then(function (result) {
       password = result.value
@@ -414,14 +431,14 @@ export class MachinesComponent implements OnInit {
       };
 
       this.http.post<any>('https://epro-f862b-default-rtdb.firebaseio.com/ProductApproval.json', body, { headers }).subscribe(data => {
-      
-      
-      this.postId = data.id;
-      Swal.fire(
-        'Deleted!',
-        'בוצע',
-        'success'
-      )
+
+
+        this.postId = data.id;
+        Swal.fire(
+          'Deleted!',
+          'בוצע',
+          'success'
+        )
       });
     }
 
@@ -510,7 +527,7 @@ export class MachinesComponent implements OnInit {
 
 
 
-  getNameEmploy(Num:any){
+  getNameEmploy(Num: any) {
 
     for (let index = 0; index < this.AllUsers.length; index++) {
       if (this.AllUsers[index].ID == parseInt(Num)) {
@@ -526,48 +543,48 @@ export class MachinesComponent implements OnInit {
 
     let person = prompt("הכנס סיסמא :");
     if (person == "2018") {
-    
-    
-    if (this.gl.Quntity == null) { alert("יש להזין כמות"); return }
-
-    var currentdate = new Date();
-    var datetime = currentdate.getDate() + "/"
-      + (currentdate.getMonth() + 1) + "/"
-      + currentdate.getFullYear() + "  "
-      + currentdate.getHours() + ":"
-      + currentdate.getMinutes()
-
-    this.ser.GetsOneStation(MacheineNumber).subscribe(gs => {
-      this.GimprOneStation = gs;
-
-      this.ser.PatchStatus(MacheineNumber, "0").subscribe() //עדכון סטטוס
-      this.ser.GetsNameStation().subscribe(gs => { this.GimprStationArry = gs; })
-
-      this.gl.Station = MacheineNumber;
-      this.gl.Instruction = this.m[i].Instruction
-      this.gl.Start = this.GimprOneStation?.TimeStart;
-      this.gl.Stop = datetime;
-
-      this.ser.addStartGimor(this.gl).subscribe(s => { alert("בוצע"), this.Gimor(), this.gl.Quntity = 0 })
 
 
+      if (this.gl.Quntity == null) { alert("יש להזין כמות"); return }
 
-    })
-    Swal.fire(
-      'Deleted!',
-      'בוצע',
-      'success'
-    )
-  
-  }
+      var currentdate = new Date();
+      var datetime = currentdate.getDate() + "/"
+        + (currentdate.getMonth() + 1) + "/"
+        + currentdate.getFullYear() + "  "
+        + currentdate.getHours() + ":"
+        + currentdate.getMinutes()
 
-  else {
-    Swal.fire(
-      'error',
-      'סיסמתך שגויה :)',
-      'error'
-    )
-  }
+      this.ser.GetsOneStation(MacheineNumber).subscribe(gs => {
+        this.GimprOneStation = gs;
+
+        this.ser.PatchStatus(MacheineNumber, "0").subscribe() //עדכון סטטוס
+        this.ser.GetsNameStation().subscribe(gs => { this.GimprStationArry = gs; })
+
+        this.gl.Station = MacheineNumber;
+        this.gl.Instruction = this.m[i].Instruction
+        this.gl.Start = this.GimprOneStation?.TimeStart;
+        this.gl.Stop = datetime;
+
+        this.ser.addStartGimor(this.gl).subscribe(s => { alert("בוצע"), this.Gimor(), this.gl.Quntity = 0 })
+
+
+
+      })
+      Swal.fire(
+        'Deleted!',
+        'בוצע',
+        'success'
+      )
+
+    }
+
+    else {
+      Swal.fire(
+        'error',
+        'סיסמתך שגויה :)',
+        'error'
+      )
+    }
 
 
 
@@ -578,11 +595,11 @@ export class MachinesComponent implements OnInit {
 
 
   NameEmpl(EmpNumber: any): any {
-    
+
     const result = this.gimorEmploye.filter(element => element.NumEmployee == EmpNumber);
-    if(result[0] != null) return result[0].NameEmployee;
-  
-    else  return "";
+    if (result[0] != null) return result[0].NameEmployee;
+
+    else return "";
 
   }
 

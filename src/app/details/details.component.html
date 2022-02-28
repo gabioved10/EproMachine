@@ -5,29 +5,33 @@
 <div class="Details">
 
 
-  <h2 style="font-size: large;">מכונה: {{machine[0].MacheineNumber}}</h2>
-  <h4 style="font-size: large;"> פק"ע: </h4> {{machine[0].Instruction}}
+  <h2 style="font-size: large;"><b>מכונה:</b> {{machine[0].MacheineNumber}}</h2>
+  <h4 style="font-size: large;"><b> פק"ע:</b> </h4> {{machine[0].Instruction}}
   <br><br>
-  <h4 style="font-size: large;">שם מוצר: </h4> {{machine[0].NameProduct}}
+  <h4 style="font-size: large;"><b>שם מוצר: </b></h4> {{machine[0].NameProduct}}
   <br><br>
-  <h4 style="font-size: large;">תבנית: </h4> {{machine[0].NumMold}}
+  <h4 style="font-size: large;"><b>תבנית:</b> </h4> {{machine[0].NumMold}}
   <br><br>
-  <h4 style="font-size: large;">שם לקוח: </h4> {{machine[0].Customer}}
+  <h4 style="font-size: large;"><b>שם לקוח: </b></h4> {{machine[0].Customer}}
   <br><br>
-  <h4 style="font-size: large;">חו"ג: </h4> {{machine[0].Material}}
+  <h4 style="font-size: large;"><b>חו"ג:</b> </h4> {{machine[0].Material}}
   <br><br>
-  <h4 style="font-size: large;">ק.א: {{machine[0].PolseTime.slice(0,5)}} &nbsp;&nbsp;
-    {{machine[0].PolseDate.slice(0,10)}}</h4>
+  <h4 style="font-size: large;"><b>ק.א: </b>{{machine[0].PolseTime.slice(0,5)}} &nbsp;&nbsp;
+    {{machine[0].PolseDate.slice(0,10)}} {{machine[0].MacheineSt}}</h4>
   <br><br>
-  <h4 style="font-size: large;"> מחזור: </h4> {{machine[0].CalcCycale.slice(3,9)}}
+  <h4 style="font-size: large;"> <b>מחזור</b>: </h4> {{machine[0].CalcCycale.slice(3,9)}}
   <br><br>
-
-
-  <h4 style="font-size: large;">יתרת שעות ייצור: {{convertHMS("00:" +
+    <h4 style="font-size: large;"><b>יתרת שעות ייצור: </b>{{convertHMS("00:" +
     machine[0].CalcCycale.slice(3,9),(machine[0].Quantity-machine[0].INJECTION))}}</h4>
   <br><br>
-
-  <button (click)="close()">סגור</button>
+       <h4 ><b>כמות פסולים:</b> </h4> <p style="font-size: medium;color:red;display: inline-block;">{{machine[0].Psolim}}</p>  <br>
+       <h4  *ngIf="machine[0].MacheineSt==3" style="font-size: medium;color:red"><b>זמן עצירה:</b>{{getStopTime()}} שעות</h4>
+       <br **ngIf="machine[0].MacheineSt==3"><br>
+       <br>
+      <div>  &nbsp; <input style="font-size: xx-large; color:red; width: 25%; text-align: center;" type="number"  [(ngModel)]="QuntityPsolim"><button  (click)="PsolimUpdate(machine[0].Instruction)">עדכון פסולים</button> 
+    </div>
+    
+    <button (click)="close()">סגור</button>
   <button (click)="StopData()" > יומן עצירות</button>
   <!-- <div *ngFor="let stop of stopData">
   

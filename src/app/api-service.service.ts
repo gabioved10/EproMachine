@@ -8,6 +8,7 @@ import { GimorEmploye } from './gimor-employe';
 import { GimorLog } from './GimorLog';
 import { KodFault } from './kod-fault';
 import { machine } from './machine';
+import { Psolim } from './psolim';
 import { GimprStation } from './Station';
 import { StopData } from './stop-data';
 import { Users } from './users';
@@ -21,6 +22,8 @@ import { Users } from './users';
   providedIn: 'root'
 })
 export class ApiService {
+ UserId:number=0;
+ UserName:number=0;
 
   // public flagForDetails = false;
   constructor(private http: HttpClient) {
@@ -92,11 +95,19 @@ export class ApiService {
 
   }
 
+  PostPsolim(psolim: Psolim): Observable<Psolim> {
+    const headers = { 'Content-Type': 'application/json' };
+    const body = psolim;
+    debugger;
+    return this.http.post<Psolim>(environment.urlmachine.substring(0, environment.urlmachine.length - 16) + "/PsolimData.json", body, { headers });
+
+
+  }
+
 
 
   addStartGimor(start:GimorLog): Observable<GimorLog> {
-    debugger;
-    return this.http.post<GimorLog>("https://epro-f862b-default-rtdb.firebaseio.com/GimorLog.json",start);
+       return this.http.post<GimorLog>("https://epro-f862b-default-rtdb.firebaseio.com/GimorLog.json",start);
   }
 
   getAllStartGimor(): Observable<GimorLog []> {

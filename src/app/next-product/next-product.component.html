@@ -3,22 +3,22 @@
 
 
 <div class="Details">
-    <i _ngcontent-eqi-c55="" class="material-icons" style="font-size: 65px; ">wysiwyg</i>
+    <i _ngcontent-eqi-c55="" class="material-icons" style="font-size: 65px;text-align: center; ">wysiwyg</i>
     <h1 style="text-align: center;">מוצר הבא מכונה: {{machine[0].MacheineNumber}}</h1>
     <h2></h2>
-    <h4>פקע : </h4> {{machine[0].NextWorkorder}}
+    <h4><b>פקע : </b></h4> {{machine[0].NextWorkorder}}
     <br><br>
-    <h4>מוצר : </h4> {{machine[0].NextProduct}}
+    <h4><b>מוצר : </b></h4> {{machine[0].NextProduct}}
     <br><br>
-    <h4>כמות : </h4> {{machine[0].NextRequiredQuantity.toLocaleString()}}
+    <h4><b>כמות :</b> </h4> {{machine[0].NextRequiredQuantity.toLocaleString()}}
     <br><br>
-    <h4>לקוח מוצר : </h4> {{machine[0].NextCustomerName}}
+    <h4><b>לקוח מוצר : </b></h4> {{machine[0].NextCustomerName}}
     <br><br>
-    <h4>תבנית : </h4> {{machine[0].NextMold}}
+    <h4><b>תבנית :</b> </h4> {{machine[0].NextMold}}
     <br><br>
-    <h4>מיקום תבנית : </h4> {{machine[0].moldLocation}}
+    <h4><b>מיקום תבנית :</b> </h4> {{machine[0].moldLocation}}
     <br><br>
-    <h4>תבנית תקינה : </h4> {{stringToBoolean(machine[0].NextMouldTakin)}}
+    <h4><b>תבנית תקינה :</b> </h4> {{stringToBoolean(machine[0].NextMouldTakin)}}
     <br><br>
     
 

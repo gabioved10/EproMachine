@@ -4,6 +4,7 @@ import { ApiService } from '../api-service.service';
 import { FaultLog } from '../fault-log';
 
 
+
 @Component({
   selector: 'app-fault-machine',
   templateUrl: './fault-machine.component.html',
@@ -18,6 +19,8 @@ export class FaultMachineComponent implements OnInit {
   flagNewFault: boolean = false;
   machineSelect: number = 0;
   highestId:number=0;
+
+
   constructor(private ser: ApiService) { }
 
   addFualt(x:number){
@@ -57,9 +60,11 @@ updateFualt(numId:number){
       var id = setInterval(frame, 2);
       function frame() {
         if (200!=scroll) {
-          document.documentElement.scrollTop = 200;
+          document.documentElement.scrollTop = 300;
           scroll++
         } }
+       
+
       this.ser.GetfaultLog().subscribe(s => {
       this.faultLog=Object.values(s)
       this.LastfaultLog = this.faultLog.sort((a:any, b:any) => {return +b.ID - (+a.ID)})

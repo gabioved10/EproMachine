@@ -13,7 +13,12 @@
     from {bottom: 0px;}
     to {bottom: 200px;}
   }
+  .computer{
 
+  }
+  .phon{
+display: none;
+  }
   table { 
     text-align: right;
     direction: rtl;
@@ -61,7 +66,25 @@
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
   button {width: auto;}
+.computer{
+    display: none;
+  }
+  .phon{
+display: inline-block;
+width: 80%;
+margin: auto;
 
+  }
+  h3{
+    display: inline-block;
+  }
+  .phon div{
+    border: 2px solid #111e68;
+    padding: 12px;
+    border-radius: 27px;
+    margin: 8px;
+    text-align: right;
+  }
   .Details {
     width: 80%;
     background-color: white;

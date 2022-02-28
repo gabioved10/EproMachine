@@ -18,6 +18,8 @@ import { NewFualtFormComponent } from './new-fualt-form/new-fualt-form.component
 import { FormsModule } from '@angular/forms';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     NextProductComponent,
     LoginComponent,
     FaultMachineComponent,
-    NewFualtFormComponent
+    NewFualtFormComponent,
+    
     
   ],
   imports: [

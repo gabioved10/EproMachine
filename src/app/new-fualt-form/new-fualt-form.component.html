@@ -9,18 +9,24 @@
     <input type="hidden" [(ngModel)]="faultLog.Owner" name="Owner" value="0">
     <input type="hidden" [(ngModel)]="faultLog.Better" name="Better" value="0">
     <input type="hidden" [(ngModel)]="faultLog.Stutos" name="Stutos" value="0">
+    <input type="hidden" [(ngModel)]="faultLog.KodTakala" name="KodTakala" value="1">
     <i class="fa fa-question-circle" style="color: #111e68ad;font-size:66px"></i>
        <label>
         <input type="hidden" [(ngModel)]="faultLog.NumMachine" value={{numberMachine}} name="NumMachine">
     </label>
 
     <label>תאור תקלה:
-        <select class="custom-select">
-            <option *ngFor="let k of KodFault"> {{k.NameFault}}</option>
-           
+        <select [(ngModel)]="selectedLevel" (change)="selected(selectedLevel)" class="custom-select">
+            <option   *ngFor="let k of KodFault"  [ngValue]="k"> {{k.NameFault}}</option>
+            
         </select>
+
+     
+
+        
 </label>
    
+
   
         <!-- <textarea [(ngModel)]="faultLog.Comments" style="margin: 0px; width: 511px; height: 148px; text-align: right; font-size: x-large;" id="w3review" name="w3review" rows="6" cols="60"> -->
 

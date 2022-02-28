@@ -1,12 +1,13 @@
 .Details {
-  width: 80%;
+  width: 50%;
   background-color: white;
   position: absolute;
   margin: auto;
-  text-align: center;
+  text-align: right;
   border: 3px solid #111e68;
   margin-right: 10%;
   border-radius: 10px;
+  padding: 15px;
  
   }
   
@@ -43,13 +44,17 @@
   
   @media only screen and (max-width: 800px) {
     .Details {
-      width: 60%;
+      width: 80%;
     background-color: white;
     margin: auto;
     position: absolute;
-    margin-right: 20%;
+    margin-right: 5%;
     text-align: right;
     border: 8px solid #111e68;
-  text-align: center;
+
+  
+    }
+    i{
+      text-align: center;
     }
   }

@@ -63,14 +63,14 @@ export class MachinesComponent implements OnInit {
 
     this.UserService.getCurrentUser().then(user1 => {
       this.userName = user1;
-    this.ser.UserName= this.userName.displayName;
+      this.ser.UserName = this.userName.displayName;
 
       this.ser.GetAllUsers().subscribe(user => {
         this.AllUsers = user,
-          this.users = user.filter(item => { 
+          this.users = user.filter(item => {
             return item.EmailAddress == this.userName.email;
           })
-         this.ser.UserId = this.users[0].ID;
+        this.ser.UserId = this.users[0].ID;
         // localStorage.setItem('idUser',temp.toString());
 
       })
@@ -263,16 +263,13 @@ export class MachinesComponent implements OnInit {
 
   async DownInstruction(nummachine: number, i: number) {
 
-    
+
     this.flagShowDetail = false;
     var password
     await Swal.fire({
-      title: 'הכנס סיסמא',
-      
-      html: `<input type="password" id="password" class="swal2-input"  placeholder="Password" >`,
-
+      title: '  הכנס סיסמא להורדת פקע',
+      input: 'textarea',
       icon: 'warning',
-      focusConfirm:true
 
 
     }).then(function (result) {
@@ -324,6 +321,8 @@ export class MachinesComponent implements OnInit {
   }
 
   async UpInstruction(nummachine: number, i: number) {
+
+   
 
     this.flagShowDetail = false;
     var password
@@ -435,7 +434,7 @@ export class MachinesComponent implements OnInit {
 
         this.postId = data.id;
         Swal.fire(
-          'Deleted!',
+          'success!',
           'בוצע',
           'success'
         )

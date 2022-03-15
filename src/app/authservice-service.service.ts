@@ -15,10 +15,11 @@ export class AuthserviceServiceService {
       (resolve, reject) => {
         
         var provider = new firebase.auth.GoogleAuthProvider();  
+        provider.addScope('profile');
+        provider.addScope('email');
         
-        
-        provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-        provider.addScope('https://www.googleapis.com/auth/userinfo.email'); 
+       // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+       // provider.addScope('https://www.googleapis.com/auth/userinfo.email'); 
 
         this.afAuth.auth.signInWithPopup(provider).then(
 

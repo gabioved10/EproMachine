@@ -134,7 +134,7 @@
                         </span>
                     </i>
 
-                    <i *ngIf="users[0].upApprove == 1 && x.AppFlag ==null && x.NextProduct!=0 && x.NextProduct!=null && x.Quantity ==0"
+                    <i *ngIf="users[0].upApprove == 1 && x.AppFlag ==null && x.NextProduct!=0 && x.NextProduct!=null && x.Quantity ==0 && x.CancelUpProduction ==false"
                         (click)="UpInstruction(x.MacheineNumber,i)"onmouseover="this.style.cursor='pointer'"
                         style="padding-left: 4px;margin-left: 5px;position: static;float: left;border: 2px solid black ;font-size:24px; padding-right: 5%;"
                         class="material-icons">

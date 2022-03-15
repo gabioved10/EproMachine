@@ -60,6 +60,7 @@ export class machine {
     KamotYzorGimor = "0";
     Owner = "";
     LastFault = "";
+    CancelUpProduction= false;
       
 
 }

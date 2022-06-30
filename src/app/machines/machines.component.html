@@ -78,7 +78,9 @@
                         <span style="display: inline-block; filter: opacity(0%);">*</span>
                         <span style="width:4%; display: inline-block; " title="אישור מוצר ראשון"
                             *ngIf="flagApprove == false && x.ApproveFirstProduct==false && x.Quantity !=0 && x.Manul+x.OthrC >1">*</span>
-                        <h2 *ngIf="Group==1 || Group==3" style="text-align: right;"> {{x.MacheineNumber}} </h2>
+                            <span style="width:4%; display: inline-block; " title="פקע הבאה"
+                            *ngIf="x.NextProduct!=0 && x.NextProduct!=null && x.MacheineSt == 0 && x.Quantity ==0">&#8595;</span>
+                            <h2 *ngIf="Group==1 || Group==3" style="text-align:right;"> &nbsp; {{x.MacheineNumber}} </h2>
                         <h2 *ngIf="Group==2" style="text-align: right;">{{NameStation(x.MacheineNumber)}}</h2>
                     </div>
 
